@@ -1,8 +1,15 @@
 
+
+.. raw:: html
+
+    <div align="center">
+        <img width="312px" alt="libvis logo" src="assets/libvis.png"/>
+    </div>
+    
 .. image:: https://img.shields.io/pypi/v/libvis.svg
     :target: https://pypi.python.org/pypi/libvis
     :alt: PyPi version
-
+    
 
 Data visualization made easier
 ==============================
