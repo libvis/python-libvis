@@ -2,7 +2,7 @@ import time
 
 def test_import():
     t = time.time()
-    import webvis
+    import libvis
     dt = time.time() - t
     print("Import time:", dt)
 

@@ -7,17 +7,17 @@ with open(path.join(this_directory, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 about = {}
-with open(path.join(this_directory, 'webvis', '__about__.py'), encoding='utf-8') as f:
+with open(path.join(this_directory, 'libvis', '__about__.py'), encoding='utf-8') as f:
     exec(f.read(), about)
 
 setup(
-    name = 'webvis',
+    name = 'libvis',
     packages = find_packages(),
     version = about['__version__'],
     author = about['__author__'],
     author_email = 'lkvdan@gmail.com',
-    url = 'https://github.com/DaniloZZZ/pywebviz',
-    description = 'A live two-way data binder for python',
+    url = 'https://github.com/libvis/python-libvis',
+    description = 'Interactive live object visualization for python',
     long_description=long_description,
     long_description_content_type='text/markdown',
 
@@ -25,7 +25,7 @@ setup(
                       'mpld3','trio','trio-websocket'],
     python_requires='>=3.3',
     include_package_data=True,
-    license='MIT',
-    keywords = ['tools', 'data', 'framework', 'visualization'], 
+    license='GPLv2',
+    keywords = ['tools', 'data', 'framework', 'visualization'],
     classifiers = [],
 )

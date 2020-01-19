@@ -1,4 +1,4 @@
-from webvis.modules import BaseModule
+from libvis.modules import BaseModule
 import json
 
 class WebPage(BaseModule):
