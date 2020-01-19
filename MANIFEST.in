@@ -1,1 +1,1 @@
-include webvis/front_build/*
+recursive-include libvis/front_build/

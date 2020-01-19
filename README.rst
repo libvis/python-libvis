@@ -1,6 +1,6 @@
 
-.. image:: https://img.shields.io/pypi/v/webvis.svg
-    :target: https://pypi.python.org/pypi/webvis
+.. image:: https://img.shields.io/pypi/v/libvis.svg
+    :target: https://pypi.python.org/pypi/libvis
     :alt: PyPi version
 
 
