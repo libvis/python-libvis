@@ -1,9 +1,9 @@
 Installation
 ============
 
-Install the ``webvis`` package from pypi
+Install the ``libvis`` package from pypi
 
 ::
-   pip install webvis
+   pip install libvis
 
 

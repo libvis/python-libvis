@@ -1,54 +1,55 @@
-webvis package
+libvis package
 ==============
 
 Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
-   webvis.helpers
-   webvis.modules
-   webvis.websocket
+   libvis.helpers
+   libvis.modules
+   libvis.websocket
 
 Submodules
 ----------
 
-webvis.VisVars module
+libvis.VisVars module
 ---------------------
 
-.. automodule:: webvis.VisVars
+.. automodule:: libvis.VisVars
    :members:
    :undoc-members:
    :show-inheritance:
 
-webvis.VisWorker module
+libvis.VisWorker module
 -----------------------
 
-.. automodule:: webvis.VisWorker
+.. automodule:: libvis.VisWorker
    :members:
    :undoc-members:
    :show-inheritance:
 
-webvis.http\_server module
+libvis.http\_server module
 --------------------------
 
-.. automodule:: webvis.http_server
+.. automodule:: libvis.http_server
    :members:
    :undoc-members:
    :show-inheritance:
 
-webvis.interface module
+libvis.interface module
 -----------------------
 
-.. automodule:: webvis.interface
+.. automodule:: libvis.interface
    :members:
    :undoc-members:
    :show-inheritance:
 
-webvis.main module
+libvis.main module
 ------------------
 
-.. automodule:: webvis.main
+.. automodule:: libvis.main
    :members:
    :undoc-members:
    :show-inheritance:
@@ -57,7 +58,7 @@ webvis.main module
 Module contents
 ---------------
 
-.. automodule:: webvis
+.. automodule:: libvis
    :members:
    :undoc-members:
    :show-inheritance:

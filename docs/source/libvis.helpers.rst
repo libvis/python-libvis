@@ -1,21 +1,21 @@
-webvis.helpers package
+libvis.helpers package
 ======================
 
 Submodules
 ----------
 
-webvis.helpers.AttrDict module
+libvis.helpers.AttrDict module
 ------------------------------
 
-.. automodule:: webvis.helpers.AttrDict
+.. automodule:: libvis.helpers.AttrDict
    :members:
    :undoc-members:
    :show-inheritance:
 
-webvis.helpers.threaded module
+libvis.helpers.threaded module
 ------------------------------
 
-.. automodule:: webvis.helpers.threaded
+.. automodule:: libvis.helpers.threaded
    :members:
    :undoc-members:
    :show-inheritance:
@@ -24,7 +24,7 @@ webvis.helpers.threaded module
 Module contents
 ---------------
 
-.. automodule:: webvis.helpers
+.. automodule:: libvis.helpers
    :members:
    :undoc-members:
    :show-inheritance:

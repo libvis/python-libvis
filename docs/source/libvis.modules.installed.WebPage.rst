@@ -1,13 +1,13 @@
-webvis.modules.installed.WebPage package
+libvis.modules.installed.WebPage package
 ========================================
 
 Submodules
 ----------
 
-webvis.modules.installed.WebPage.back module
+libvis.modules.installed.WebPage.back module
 --------------------------------------------
 
-.. automodule:: webvis.modules.installed.WebPage.back
+.. automodule:: libvis.modules.installed.WebPage.back
    :members:
    :undoc-members:
    :show-inheritance:
@@ -16,7 +16,7 @@ webvis.modules.installed.WebPage.back module
 Module contents
 ---------------
 
-.. automodule:: webvis.modules.installed.WebPage
+.. automodule:: libvis.modules.installed.WebPage
    :members:
    :undoc-members:
    :show-inheritance:

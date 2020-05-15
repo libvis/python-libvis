@@ -1,20 +1,21 @@
-webvis.modules package
+libvis.modules package
 ======================
 
 Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
-   webvis.modules.installed
+   libvis.modules.installed
 
 Submodules
 ----------
 
-webvis.modules.Base module
+libvis.modules.Base module
 --------------------------
 
-.. automodule:: webvis.modules.Base
+.. automodule:: libvis.modules.Base
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +24,7 @@ webvis.modules.Base module
 Module contents
 ---------------
 
-.. automodule:: webvis.modules
+.. automodule:: libvis.modules
    :members:
    :undoc-members:
    :show-inheritance:

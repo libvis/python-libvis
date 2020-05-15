@@ -9,7 +9,7 @@ and type the following:
 
 .. code-block:: python
 
-   from webvis import Vis
+   from libvis import Vis
    vis = Vis()
    vis.start()
    vis.vars.test = [ x**2 for x in range(-20,20) ]

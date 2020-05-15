@@ -18,14 +18,14 @@ from datetime import date
 #p = os.path.abspath(os.path.join(os.path.dirname(file_loc), '../../'))
 #sys.path.insert(0, p)
 
-import webvis
+import libvis
 
 # -- Project information -----------------------------------------------------
 
-project = webvis.__about__.__project__
-author = webvis.__about__.__author__
+project = libvis.__about__.__project__
+author = libvis.__about__.__author__
 # The short X.Y version
-version = webvis.__about__.__version__
+version = libvis.__about__.__version__
 # The full version, including alpha/beta/rc tags
 release = version
 copyright = u'Copyright 2016 - {0} {1}'.format(date.today().year, author)
