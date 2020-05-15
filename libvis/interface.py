@@ -17,6 +17,11 @@ try:
 except Exception as e:
     print(e)
 
+IFC = {}
+
+def add_serializer(type, ser):
+    IFC[type] = ser
+
 def preprocess_value(val):
     if is_bokeh(val):
         ret = bokeh.embed.file_html(val, bokeh.resources.Resources('cdn'))
@@ -28,6 +33,12 @@ def preprocess_value(val):
         ret, type_ = ndarray_val(val)
     elif isinstance(val, VisVars):
         ret, type_ = vismodule_val(val)
+    elif type(val) in IFC.keys():
+        try:
+            type_ = type(val).name
+        except AttributeError:
+            type_ = str(type(val))
+        ret = IFC[type(val)](val)
     else:
         ret = val
         type_ = 'raw'

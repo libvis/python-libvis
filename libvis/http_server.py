@@ -51,11 +51,6 @@ class Server(BaseHTTPRequestHandler):
     def do_HEAD(self):
         self._set_headers()
 
-    def do_POST(self):
-        # Doesn't do anything with posted data
-        self._set_headers()
-        self.wfile.write("<html><body><h1>POST!</h1></body></html>")
-
 def create_server(server_class=HTTPServer, handler_class=Server, port=80):
     server_address = ('', port)
     print('Starting http at', port)
