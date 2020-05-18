@@ -31,6 +31,8 @@ class Vis():
         return ref(o)
 
     def start(self):
+        if self.http_server is None:
+            raise Exception("http server not initialized. Recreate Vis instance.")
         self.phttp = threaded( self.http_server.serve_forever, name='http')
         self.app.run()
 
@@ -44,7 +46,10 @@ class Vis():
 
     def stop(self):
         print("Stopping app server")
-        if self.phttp.is_alive():
-            self.http_server.shutdown()
+        if hasattr(self, 'phttp'):
+            if self.phttp.is_alive():
+                self.http_server.shutdown()
+        else:
+            print('Warning: http was already dead')
         print("Stopping websocket server")
         self.app.stop()
