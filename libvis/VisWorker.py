@@ -5,7 +5,7 @@ from libvis import ref
 from .helpers.threaded import threaded
 from .http_server import create_server as create_http
 from .VisVars import VisVars, VisObject
-from .interface import IFC, serialize_to_vis
+from .interface import add_serializer, serialize_to_vis
 
 class Vis():
     def __init__(self, ws_port = 7700, vis_port=7000, nb_name=None):
@@ -27,7 +27,7 @@ class Vis():
         self.vars[key] = o
         if serializer:
             # Note: this will act on *any* object of same type
-            IFC.add_serializer(type(obj), serializer)
+            add_serializer(type(obj), serializer)
         return ref(o)
 
     def start(self):

@@ -29,9 +29,9 @@ def serialize_to_vis(value):
 def preprocess_value(val):
 
     if type(val) in IFC.keys():
-        try:
+        if isinstance(val, VisVars):
             type_ = type(val).name
-        except AttributeError:
+        else :
             type_ = type(val).__name__
         ret = IFC[type(val)](val)
     elif is_bokeh(val):

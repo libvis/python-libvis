@@ -11,7 +11,7 @@ class VisVars(Object):
         return name, value
 
 class VisObject(VisVars):
-    name='Object'
+    name='VisVar'
     def __init__(self, value):
         super().__init__()
         self.body = value
