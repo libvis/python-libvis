@@ -31,7 +31,7 @@ def test_simple():
             yield 'Pong'
 
     Process(target=start_server,
-            args=('localhost', 8000, server)
+            args=('0.0.0.0', 8000, server)
            ).start()
     time.sleep(.1)
 

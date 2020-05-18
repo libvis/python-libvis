@@ -22,7 +22,7 @@ setup(
     long_description_content_type='text/markdown',
 
     install_requires=['legimens', 'matplotlib', 'numpy', 'requests',
-                      'trio','trio-websocket'],
+                      'trio>=0.13','trio-websocket>=0.8'],
     python_requires='>=3.3',
     include_package_data=True,
     license='GPLv2',

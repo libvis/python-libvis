@@ -1,19 +1,14 @@
+import gc
+import json
+import pytest
+import asyncio
+from mock import patch
+from functools import wraps
+
 from libvis import Vis, ref
 from libvis.interface import IFC
-import json
-import asyncio
-from functools import wraps
-from mock import patch
-import gc
 
-def sync(coro):
-    @wraps(coro)
-    def wrapper(*args, **kwargs):
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(coro(*args, **kwargs))
-    return wrapper
-
-@sync
+@pytest.mark.asyncio
 async def test_set_watch():
     x = [5]
     vis = Vis()

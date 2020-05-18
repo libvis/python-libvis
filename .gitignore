@@ -103,4 +103,5 @@ venv.bak/
 
 # mypy
 .mypy_cache/
->>>>>>> ed6d4be7973d7ada2c2ee5c00c19dd5d1c37dbb7
+data
+libvis/modules/installed
