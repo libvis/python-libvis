@@ -3,6 +3,7 @@ from libvis.interface import IFC
 import json
 import asyncio
 from functools import wraps
+from mock import patch
 import gc
 
 def sync(coro):
@@ -31,6 +32,13 @@ async def test_set_watch():
         assert ev['body']['type'] == 'raw'
         assert ev['body']['value'] == x
         break
+
+    # test waiting 
+    vis.app._sleep_func = asyncio.sleep
+    with patch('legimens.App._send_message_to_subscribers') as send_mock:
+        asyncio.ensure_future(vis.app._poll_objects())
+        await asyncio.sleep(.5)
+        assert send_mock.call_count >= 2
 
     # test that it collects the garbage
     del x
