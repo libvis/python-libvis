@@ -3,7 +3,8 @@ from legimens import App
 
 from .helpers.threaded import threaded
 from .http_server import create_server as create_http
-from .VisVars import VisVars
+from .VisVars import VisVars, VisObject
+from .interface import IFC
 
 class Vis():
     def __init__(self, ws_port = 7700, vis_port=7000, nb_name=None):
@@ -17,6 +18,13 @@ class Vis():
         self.app.vars = VisVars()
         self.app._register_child(self.app.vars)
         self.vars = self.app.vars
+
+    def watch(self, obj, serializer=None):
+        o = VisObject(obj)
+        self.app.watch_obj(o)
+        if serializer:
+            # Note: this will act on *any* object of same type
+            IFC.add_serializer(type(obj), serializer)
 
     def start(self):
         self.phttp = threaded( self.http_server.serve_forever, name='http')
