@@ -7,7 +7,7 @@ class BaseModule(VisVars):
         return value
 
     def vis_set(self, key, value):
-        super()._prepare_set(key, value)
+        super()._commit_update(key, value)
 
     def _prepare_send(self, name, value):
         value = self.vis_get(name)
