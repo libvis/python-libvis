@@ -21,13 +21,16 @@ class Vis():
         self.app.serialize_value = serialize_to_vis
         self.vars = self.app.vars
 
+    def use(type_, serializer):
+        add_serializer(type_, serializer)
+
     def watch(self, obj, key, serializer=None):
         o = VisObject(obj)
         self.app.watch_obj(o)
         self.vars[key] = o
         if serializer:
-            # Note: this will act on *any* object of same type
-            add_serializer(type(obj), serializer)
+            # Note: this will act on *any* object of the same type
+            self.use(type(obj), serializer)
         return ref(o)
 
     def start(self):

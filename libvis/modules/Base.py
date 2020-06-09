@@ -3,7 +3,12 @@ from libvis import VisVars
 class BaseModule(VisVars):
     def vis_get(self, key):
         value = self[key]
-        name, value = super()._prepare_send(key, value)
+        """
+        If one wants to process the attribute of the module, tey should use
+        ifc.serialize_to_vis(value)
+        by their own.
+        """
+        # name, value = super()._prepare_send(key, value)
         return value
 
     def vis_set(self, key, value):

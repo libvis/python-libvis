@@ -34,6 +34,9 @@ def infer_type(val):
     return type_
 
 def preprocess_value(val):
+    if hasattr(val, 'vis_repr'):
+        ret, type_ = val.vis_repr()
+        return ret, type_
 
     if type(val) in IFC.keys():
         type_ = infer_type(val)
