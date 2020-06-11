@@ -1,5 +1,6 @@
 sphinx
 sphinx-autobuild
+nbsphinx
 
 # if using typehints
 sphinx-autodoc-typehints

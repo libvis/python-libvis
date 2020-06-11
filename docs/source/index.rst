@@ -11,6 +11,8 @@ Release v\ |version|
 .. toctree::
    :maxdepth: 2
 
+   examples/notebooks/test
+
    usage/installation
    usage/quickstart
 
