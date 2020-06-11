@@ -22,6 +22,11 @@ IFC = {}
 def add_serializer(type, ser):
     IFC[type] = ser
 
+def __x():
+    pass
+
+add_serializer(type(__x), str)
+
 def serialize_to_vis(value):
     value, type_= preprocess_value(value)
     return {'value': value, 'type': type_}
