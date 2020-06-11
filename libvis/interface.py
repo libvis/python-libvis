@@ -34,9 +34,15 @@ def infer_type(val):
     return type_
 
 def preprocess_value(val):
-    if hasattr(val, 'vis_repr'):
+    try:
+        # Note: libvis object is dict and will throw KeyError
+        _ = val.vis_repr
         ret, type_ = val.vis_repr()
         return ret, type_
+
+    except (AttributeError, KeyError):
+        pass
+
 
     if type(val) in IFC.keys():
         type_ = infer_type(val)
