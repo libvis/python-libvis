@@ -54,12 +54,11 @@ class Server(BaseHTTPRequestHandler):
 def create_server(server_class=HTTPServer, handler_class=Server, port=80):
     server_address = ('', port)
     print('Starting http at', port)
-    global httpd
     try:
         httpd = server_class(server_address, handler_class)
     except OSError as ose:
         print(f"HTTPServer start on {port} failed: {ose}", file=sys.stderr)
-        return
+        raise
     return httpd
 
 def run(server_class=HTTPServer, handler_class=Server, port=80):
