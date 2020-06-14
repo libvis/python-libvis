@@ -1,3 +1,6 @@
+Simple use story
+================
+    
 Let's say you want to run a simple python program that counts sheep that jump over a fence.
 And some sheep are not able to make it.
 
