@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to webvis pyhton backend documentation!
+Welcome to Libvis pyhton backend documentation!
 =========================================
 
 Release v\ |version|
@@ -12,6 +12,7 @@ Release v\ |version|
    :maxdepth: 2
 
    examples/notebooks/test
+   legimens/index
 
    usage/installation
    usage/quickstart
