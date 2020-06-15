@@ -11,6 +11,9 @@ And some sheep are not able to make it.
         if jump_result is False:
             print('Oops, failed to jump!')
 
+Serving updates
+--------------
+
 And you are really interested in how many sheep couldn't jump.
 In fact, you are so interested that you don't want to wait until the loop ends.
 You want to monitor them `live`.
@@ -22,6 +25,7 @@ This will leave you with a mess in your console output.
 Another option is to use `libvis`.
 
 .. code-block:: python
+    :emphasize-lines: 1,2,8
 
     from libvis import Vis
     vis = Vis(vis_port=7000)
@@ -35,3 +39,5 @@ Another option is to use `libvis`.
 Now, you have a live dashboard running at http://localhost:7000
 with up-to-date number of your poor sheep.
 
+Getting updates from browser
+----------------------------
