@@ -19,7 +19,7 @@ In fact, you are so interested that you don't want to wait until the loop ends.
 You want to monitor them `live`.
 
 One way of doing it is to use plain old ``print`` function.
-just output total number of fails every time one occurs.
+Just output the total number of fails every time one occurs.
 This will leave you with a mess in your console output.
 
 Another option is to use `libvis`.
@@ -37,7 +37,7 @@ Another option is to use `libvis`.
             vis.vars.fails += 1
 
 Now, you have a live dashboard running at http://localhost:7000
-with up-to-date number of your poor sheep.
+with an up-to-date number of your poor sheep.
 
-Getting updates from browser
+Getting updates from your browser
 ----------------------------
