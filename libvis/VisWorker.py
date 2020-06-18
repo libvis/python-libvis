@@ -43,7 +43,7 @@ class Vis():
 
         1. Starts an http server with dashboard app
             on `vis_port`.
-        2. Starts the legimens app using `vis.app.run()`.
+        2. Starts the legimens app using `Vis.app.run()`.
 
 
         Raises:
@@ -51,12 +51,24 @@ class Vis():
                 http or websocket server in legimens.
 
         """
-        self.http_server = create_http(port=self.vis_port)
-        if self.http_server is None:
-            raise Exception("http server not initialized. Recreate Vis instance.")
+        try:
+            self.start_http(self.vis_port)
+        except Exception as e:
+            print(f"Webapp HTTP server failed to start at port {self.vis_port}."
+                  " To start manually: `Vis.start_http(port)`."
+                  #"Error was:", e
+                  , file=sys.stderr)
+
+        if not self.app._running:
+            self.app.run()
+        else:
+            print("Legimens app is already running, what are you doing? To stop: `Vis.stop()`")
+
+    def start_http(self, port=None):
+        if port is None: port=self.vis_port
+        self.http_server = create_http(port=port)
         self.phttp = threaded( self.http_server.serve_forever, name='http')
         print(f'Started libvis app at http://localhost:{self.vis_port}')
-        self.app.run()
 
     def use(type_, serializer):
         add_serializer(type_, serializer)
@@ -94,10 +106,10 @@ class Vis():
             print('Warning: no http server to stop.')
 
     def stop(self):
-        print("Stopping webapp http server: self.stop_http()...", end="", flush=True)
+        print("Stopping webapp http server: `Vis.stop_http()`...", end="", flush=True)
         self.stop_http()
         print(" OK")
-        print("Stopping websocket server: self.app.stop()...", end="", flush=True)
+        print("Stopping websocket server: `Vis.app.stop()`...", end="", flush=True)
         self.app.stop()
         print(" OK")
 
