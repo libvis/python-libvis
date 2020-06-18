@@ -14,6 +14,7 @@ class Vis():
     def __init__(self, ws_port = 7700, vis_port=7000
                  , nb_name=None
                  , debug=False
+                 , allow_remote=False
                 ):
 
         self.ws_port = ws_port
@@ -21,15 +22,17 @@ class Vis():
 
         if debug: log_level = 'DEBUG'
         else: log_level = 'ERROR'
-        self.configure_logging(log_level)
         self.nb_name = nb_name
 
-        self.app = App(addr='localhost', port=ws_port)
+        addr = '0.0.0.0' if allow_remote else 'localhost' 
+
+        self.app = App(addr=addr, port=ws_port)
         self.app.vars = VisVars()
         self.app._register_child(self.app.vars)
         self.app.serialize_value = serialize_to_vis
         self.vars = self.app.vars
 
+        self.configure_logging(log_level)
         self.start()
 
 
@@ -91,10 +94,10 @@ class Vis():
             print('Warning: no http server to stop.')
 
     def stop(self):
-        print("Stopping app server...", end="", flush=True)
+        print("Stopping webapp http server: self.stop_http()...", end="", flush=True)
         self.stop_http()
         print(" OK")
-        print("Stopping websocket server...", end="", flush=True)
+        print("Stopping websocket server: self.app.stop()...", end="", flush=True)
         self.app.stop()
         print(" OK")
 
