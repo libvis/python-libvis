@@ -9,6 +9,7 @@ from .helpers.threaded import threaded
 from .http_server import create_server as create_http
 from .VisVars import VisVars, VisObject
 from .interface import add_serializer, serialize_to_vis
+from .interface import infer_type
 
 class Vis():
     def __init__(self, ws_port = 7700, vis_port=7000
@@ -70,8 +71,17 @@ class Vis():
         self.phttp = threaded( self.http_server.serve_forever, name='http')
         print(f'Started libvis app at http://localhost:{self.vis_port}')
 
-    def use(type_, serializer):
-        add_serializer(type_, serializer)
+    def use(self, py_type, serializer, mod_str=None):
+        """
+        Adds a serializer to libvis.interface.IFC
+
+        Args:
+            py_type: Type of object with wich to use the serializer
+            serializer: Callable that returns a dictionary
+
+        """
+
+        add_serializer(py_type, serializer, mod_str=mod_str)
 
     def watch(self, obj, key, serializer=None):
         o = VisObject(obj)

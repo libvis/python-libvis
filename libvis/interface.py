@@ -19,26 +19,60 @@ except Exception as e:
 
 IFC = {}
 
-def add_serializer(type, ser):
-    IFC[type] = ser
+def type_to_mod_str(type_):
+    if issubclass(type_, VisVars):
+        mod_str = type_.name
+    else :
+        mod_str = type_.__name__
+    return mod_str
 
+def add_serializer(type_, ser, mod_str=None):
+    """
+    A little bit of hackery.
+
+    vis_pair is `type, value` that will be sent to ws.
+    This function takes `type` string from type of the value.
+
+    IFC dict is populated with a wrapped serializer that
+    is bound to the `type` variable
+
+    Args:
+        type (python type): key of IFC
+        ser (callable): function that returns serialezed obj
+        mod_str (string): mod string to bind to
+
+    """
+    if not mod_str:
+        mod_str = type_to_mod_str(type_)
+
+    def to_vis_pair(obj):
+        return mod_str, ser(obj)
+
+    add_vis_pair(type_, to_vis_pair)
+
+def infer_type(val):
+    return type_to_mod_str(type(val))
+
+
+def add_vis_pair(type_, vis_pair):
+    IFC[type] =  vis_pair
+
+# - don't fail on functions
 def __x():
     pass
-
 add_serializer(type(__x), str)
+# -
+
 
 def serialize_to_vis(value):
+    """ Value to object that goes to websocket """
     value, type_= preprocess_value(value)
     return {'value': value, 'type': type_}
 
-def infer_type(val):
-    if isinstance(val, VisVars):
-        type_ = type(val).name
-    else :
-        type_ = type(val).__name__
-    return type_
 
 def preprocess_value(val):
+    """ Value to vis_pair. """
+
     try:
         # Note: libvis object is dict and will throw KeyError
         _ = val.vis_repr
@@ -51,7 +85,7 @@ def preprocess_value(val):
 
     if type(val) in IFC.keys():
         type_ = infer_type(val)
-        ret = IFC[type(val)](val)
+        ret, type_ = IFC[type(val)](val)
     elif is_bokeh(val):
         ret = bokeh.embed.file_html(val, bokeh.resources.Resources('cdn'))
         type_ = 'mpl'
