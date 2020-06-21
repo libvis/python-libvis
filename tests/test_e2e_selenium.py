@@ -4,7 +4,6 @@ import os
 
 import time
 
-import libvis_mods
 import libvis
 import libvis.modules.installed as modules
 
@@ -20,7 +19,6 @@ def test_init_instal(tmp_path):
     browser = webdriver.Firefox()
 
     try:
-        print("Installed modules:", libvis_mods.installed())
 
         # 1.
         vis = libvis.Vis(ws_port=7700, vis_port=7000, debug=True)
