@@ -24,7 +24,9 @@ def test_init_instal(tmp_path):
 
         # 1.
         vis = libvis.Vis(ws_port=7700, vis_port=7000, debug=True)
-        m = modules.WebPage(addr='https://example.com')
+
+        my_url = "http://example.com"
+        m = modules.WebPage(addr=my_url)
         modname = m.name
 
         vis.vars.test = m
@@ -37,10 +39,22 @@ def test_init_instal(tmp_path):
         # This is probably not the best way, since loading time may vary 
         # for complex visualisations or big data. 
         # May cause false negatives
-        time.sleep(0.1)
-        test_root = widget.find_element_by_xpath(
-            f".//*[@class=\"{modname}-presenter\"]")
+        time.sleep(1.1)
+
+        widget_html = widget.get_attribute('outerHTML')
+        assert 'iframe' in widget_html
+        print("Widget html", widget_html)
+
+
+        test_root = widget.find_element_by_css_selector(
+            f".vistype-{modname}")
         assert test_root
+        root_html = test_root.get_attribute('outerHTML')
+        print("root html", root_html)
+        assert 'iframe' in root_html
+
+        iframe = test_root.find_element_by_css_selector('iframe')
+        assert my_url in iframe.get_attribute('outerHTML')
 
     finally:
         vis.stop()
