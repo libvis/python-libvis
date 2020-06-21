@@ -1,4 +1,5 @@
 import json
+from loguru import logger as log
 from .VisVars import VisVars
 try:
     import numpy as np
@@ -55,7 +56,7 @@ def infer_type(val):
 
 
 def add_vis_pair(type_, vis_pair):
-    IFC[type] =  vis_pair
+    IFC[type_] =  vis_pair
 
 # - don't fail on functions
 def __x():
@@ -72,6 +73,7 @@ def serialize_to_vis(value):
 
 def preprocess_value(val):
     """ Value to vis_pair. """
+    log.debug("Preprocessing {}", val)
 
     try:
         # Note: libvis object is dict and will throw KeyError
@@ -83,9 +85,11 @@ def preprocess_value(val):
         pass
 
 
+    log.debug("IFC keys {}", IFC.keys())
     if type(val) in IFC.keys():
-        type_ = infer_type(val)
-        ret, type_ = IFC[type(val)](val)
+        type_, ret= IFC[type(val)](val)
+        log.debug("Interface returns {} {}", ret, type_)
+
     elif is_bokeh(val):
         ret = bokeh.embed.file_html(val, bokeh.resources.Resources('cdn'))
         type_ = 'mpl'
