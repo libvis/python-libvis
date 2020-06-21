@@ -22,10 +22,27 @@ IFC = {}
 def add_serializer(type, ser):
     IFC[type] = ser
 
-def __x():
-    pass
 
-add_serializer(type(__x), str)
+def reset_IFC():
+    """ Reinitialize global value of IFC
+
+    Should I have global IFC or local to Vis obj?
+    For:
+        Different Vis instances might share set up
+        visualization so no need to configure them separately.
+    Against:
+        Different Vis may serve different purposes,
+        so there might be a need to configure them
+                differently.
+    """
+    def __x():
+        pass
+
+    IFC.clear()
+    add_serializer(type(__x), str)
+
+reset_IFC()
+
 
 def serialize_to_vis(value):
     value, type_= preprocess_value(value)
