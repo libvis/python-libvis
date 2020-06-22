@@ -24,6 +24,15 @@ setup(
     install_requires=['legimens', 'matplotlib', 'numpy', 'requests',
                       'trio>=0.13','trio-websocket>=0.8'],
     python_requires='>=3.3',
+
+    # On github actions, MANIFEST.in is not enough to include these. Why?
+    # Why does python setup.py not respect MANIFEST.in? 
+    # Even `include_package_data` does not help.
+    # This one fixes the issue.
+    data_files=[
+        'libvis/front_build/index.html',
+        'libvis/front_build/index.bundle.js'
+    ],
     include_package_data=True,
     license='GPLv2',
     keywords = ['tools', 'data', 'framework', 'visualization'],
