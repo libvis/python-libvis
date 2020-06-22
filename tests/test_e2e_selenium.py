@@ -31,6 +31,10 @@ def test_init_instal(tmp_path):
 
         # 2.
         browser.get('http://localhost:7000')
+        # Sleep a bit to load everything
+        time.sleep(0.2)
+        html = browser.find_element_by_css_selector('html')
+        assert 'widget' in html.get_attribute('outerHTML')
 
         widget = add_widget(browser, 'test')
         # Wait for libvis to answer. 
