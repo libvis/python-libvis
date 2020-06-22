@@ -24,6 +24,8 @@ setup(
     install_requires=['legimens', 'matplotlib', 'numpy', 'requests',
                       'trio>=0.13','trio-websocket>=0.8'],
     python_requires='>=3.3',
+    # On github actions, MANIFEST.in is not enough to include these. Why?
+    # This one fixes the issue.
     data_files=[
         'libvis/front_build/index.html',
         'libvis/front_build/index.bundle.js'
