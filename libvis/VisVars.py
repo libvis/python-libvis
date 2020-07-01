@@ -23,11 +23,11 @@ class VisHooks(VisVars):
         self.body = value
 
     def on_receive(self, func):
-        def _commit_update(self, update):
-            self.func(update)
+        def _commit_update(update):
+            func(update)
         self._commit_update = _commit_update
 
     def set_serializer(self, ser):
-        def _prepare_send(self, name, value):
-            return 'body', ser(value)
+        def _prepare_send(name, value):
+            return name, ser(value)
         self._prepare_send = _prepare_send
