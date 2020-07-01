@@ -15,3 +15,19 @@ class VisObject(VisVars):
     def __init__(self, value):
         super().__init__()
         self.body = value
+
+class VisHooks(VisVars):
+    name='VisVar'
+    def __init__(self, value):
+        super().__init__()
+        self.body = value
+
+    def on_receive(self, func):
+        def _commit_update(self, update):
+            self.func(update)
+        self._commit_update = _commit_update
+
+    def set_serializer(self, ser):
+        def _prepare_send(self, name, value):
+            return 'body', ser(value)
+        self._prepare_send = _prepare_send
