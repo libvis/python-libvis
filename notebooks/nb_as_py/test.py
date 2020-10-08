@@ -15,7 +15,7 @@
 
 # + [markdown] toc=true
 # <h1>Table of Contents<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"><li><span><a href="#Libvis-basic-usage" data-toc-modified-id="Libvis-basic-usage-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Libvis basic usage</a></span><ul class="toc-item"><li><span><a href="#Start-the-server" data-toc-modified-id="Start-the-server-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Start the server</a></span></li><li><span><a href="#Visualisation-of-different-objects" data-toc-modified-id="Visualisation-of-different-objects-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Visualisation of different objects</a></span><ul class="toc-item"><li><span><a href="#Number-->-Number" data-toc-modified-id="Number-->-Number-1.2.1"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Number -&gt; Number</a></span></li><li><span><a href="#List-of-numbers-->-Line-graph" data-toc-modified-id="List-of-numbers-->-Line-graph-1.2.2"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>List of numbers -&gt; Line graph</a></span></li><li><span><a href="#2d-Array-->-Image" data-toc-modified-id="2d-Array-->-Image-1.2.3"><span class="toc-item-num">1.2.3&nbsp;&nbsp;</span>2d Array -&gt; Image</a></span></li></ul></li><li><span><a href="#Restart-the-server" data-toc-modified-id="Restart-the-server-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Restart the server</a></span></li><li><span><a href="#Live-data-stream" data-toc-modified-id="Live-data-stream-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Live data stream</a></span></li><li><span><a href="#Matplotlib-figures" data-toc-modified-id="Matplotlib-figures-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Matplotlib figures</a></span></li><li><span><a href="#Bokeh-figures" data-toc-modified-id="Bokeh-figures-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Bokeh figures</a></span></li><li><span><a href="#Camera-live-stream" data-toc-modified-id="Camera-live-stream-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Camera live stream</a></span></li></ul></li></ul></div>
+# <div class="toc"><ul class="toc-item"><li><span><a href="#Libvis-basic-usage" data-toc-modified-id="Libvis-basic-usage-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Libvis basic usage</a></span><ul class="toc-item"><li><span><a href="#Start-the-server" data-toc-modified-id="Start-the-server-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Start the server</a></span></li><li><span><a href="#Visualisation-of-different-objects" data-toc-modified-id="Visualisation-of-different-objects-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Visualisation of different objects</a></span><ul class="toc-item"><li><span><a href="#Number-->-Number" data-toc-modified-id="Number-->-Number-1.2.1"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Number -&gt; Number</a></span></li><li><span><a href="#List-of-numbers-->-Line-graph" data-toc-modified-id="List-of-numbers-->-Line-graph-1.2.2"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>List of numbers -&gt; Line graph</a></span></li><li><span><a href="#2d-Array-->-Image" data-toc-modified-id="2d-Array-->-Image-1.2.3"><span class="toc-item-num">1.2.3&nbsp;&nbsp;</span>2d Array -&gt; Image</a></span></li></ul></li><li><span><a href="#Restart-the-server" data-toc-modified-id="Restart-the-server-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Restart the server</a></span></li><li><span><a href="#Live-data-stream" data-toc-modified-id="Live-data-stream-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Live data stream</a></span></li><li><span><a href="#Matplotlib-figures" data-toc-modified-id="Matplotlib-figures-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Matplotlib figures</a></span></li><li><span><a href="#Bokeh-figures" data-toc-modified-id="Bokeh-figures-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Bokeh figures</a></span></li><li><span><a href="#Seaborn:-large-dataset" data-toc-modified-id="Seaborn:-large-dataset-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Seaborn: large dataset</a></span></li><li><span><a href="#Camera-live-stream" data-toc-modified-id="Camera-live-stream-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Camera live stream</a></span></li></ul></li></ul></div>
 
 # +
 import numpy as np
@@ -36,10 +36,8 @@ import libvis.modules
 # ### Start the server
 #
 
-vis = Vis(ws_port=7700, vis_port=7000)
+vis = Vis(ws_port=7700, vis_port=7000, allow_remote=True)
 
-
-vis.start()
 
 # ### Visualisation of different objects
 # #### Number -> Number
@@ -59,19 +57,22 @@ vis.vars.number = 1
 vis.vars.graph = [2, 1, 7, 1, 8, 2, 8]
 
 x = np.linspace(0, 10, 50)
-vis.vars.graph_np = np.sin(x)
+vis.vars.graph_numpy = np.sin(x)
 # -
 
 # #### 2d Array -> Image
 #
 
-im = np.random.randn(120,101)*145
-vis.vars.image = im
+im = np.random.randn(201,120,3)*145
+vis.vars.image_canvas = im
 
+
+from libvis.modules import Image
+
+im = np.random.randn(120,201,3)*.5
+vis.vars.image_png = Image(im)
 
 # ### Restart the server
-
-
 
 vis.stop()
 
@@ -79,13 +80,12 @@ vis.start()
 
 # ### Live data stream
 
-vis.vars.bii = [1]
-for i in range(60):
-    vis.vars.bii+=[np.random.randint(100)]
-    time.sleep(.01)
+vis.vars.stream = [1]
+for i in range(100):
+    vis.vars.stream += [np.random.randint(100)]
+    time.sleep(.005)
 
-# +
-# %%time
+# Lissajous curves 
 
 for i in tqdm(range(100)):
     vis.vars.test=np.sin(
@@ -96,12 +96,13 @@ for i in tqdm(range(100)):
         ]
     ).tolist()
     time.sleep(0.1)
-#jkjkvis.vars['test']
-# -
+
+# This should plot following in webapp:
+#
+# ![image.png](attachment:image.png)
 
 # ### Matplotlib figures
 
-# generate df
 N = np.random.randn(1000)
 fig, ax = plt.subplots(figsize=(10,5))
 ax.hist(N,bins=100)
@@ -109,6 +110,8 @@ vis.vars.image = fig
 
 
 # ### Bokeh figures
+
+# Bokeh is a better plotting utility that allows scalable interactive plots
 
 # +
 from bokeh.plotting import figure
@@ -135,10 +138,17 @@ p.hex_tile(q="q", r="r", size=0.1, line_color=None, source=bins,
 type(p)
 
 vis.vars.bokeh = p
-print(isinstance(p,bokeh.model.Model))
-print(isinstance(p,bokeh.document.document.Document))
+# -
 
-#output_file("hex_tile.html")
+# Resulting interactive widget:
+#
+# ![image.png](attachment:image.png)
+
+# ### Seaborn: large dataset
+
+# Seaborn is advanced statistical plotting utility based on matplitlib.
+#
+# The following picture has a 54K datapoints, and it starts to be laggy.
 
 # +
 import seaborn as sns
@@ -147,7 +157,9 @@ sns.set(style="whitegrid")
 
 # Load the example iris dataset
 diamonds = sns.load_dataset("diamonds")
+diamonds
 
+# +
 # Draw a scatter plot while assigning point colors and sizes to different
 # variables in the dataset
 f, ax = plt.subplots(figsize=(6.5, 6.5))
@@ -169,7 +181,7 @@ import cv2
 
 
 # +
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 camera_opened = cap.isOpened()
 print('Camera opened:', camera_opened)
 

@@ -51,8 +51,8 @@ class Server(BaseHTTPRequestHandler):
     def do_HEAD(self):
         self._set_headers()
 
-def create_server(server_class=HTTPServer, handler_class=Server, port=80):
-    server_address = ('', port)
+def create_server(server_class=HTTPServer, handler_class=Server, addr='', port=80):
+    server_address = (addr, port)
     try:
         httpd = server_class(server_address, handler_class)
     except OSError as ose:

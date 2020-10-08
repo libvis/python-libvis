@@ -100,7 +100,7 @@ def ndarray_val(val):
     if len(sh) >= 2:
         if sh[0]>10 and sh[1]>10:
             ret = numpy_to_image(val)
-            type_='img'
+            type_='_img'
         else:
             ret = val.tolist()
             type_ = 'raw'
