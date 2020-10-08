@@ -17,6 +17,8 @@ try:
 except Exception as e:
     print(e)
 
+# -- Configure IFC map: type->serializer
+
 IFC = {}
 
 def add_serializer(type, ser):
@@ -40,8 +42,10 @@ def reset_IFC():
 
     IFC.clear()
     add_serializer(type(__x), str)
+    add_serializer(type(print), str)
 
 reset_IFC()
+# --
 
 
 def serialize_to_vis(value):

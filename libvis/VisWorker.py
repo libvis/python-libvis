@@ -70,13 +70,14 @@ class Vis():
         self.phttp = threaded( self.http_server.serve_forever, name='http')
         print(f'Started libvis app at http://localhost:{self.vis_port}')
 
-    def use(type_, serializer):
+    def use(self, type_, serializer):
         add_serializer(type_, serializer)
 
     def watch(self, obj, key, serializer=None):
         o = VisObject(obj)
         self.app.watch_obj(o)
-        self.vars[key] = o
+        # it will register. is it bad?
+        self.vars.__setattr__(key, o)
         if serializer:
             # Note: this will act on *any* object of the same type
             self.use(type(obj), serializer)
