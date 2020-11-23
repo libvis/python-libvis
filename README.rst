@@ -3,7 +3,9 @@
 .. raw:: html
 
     <div align="center">
+        <a href="http://libvis.dev>
         <img width="312px" alt="libvis logo" src="assets/libvis.png"/>
+        </a>
     </div>
     
 .. image:: https://img.shields.io/pypi/v/libvis.svg
@@ -11,16 +13,22 @@
     :alt: PyPi version
     
 
+`libvis.dev <https://libvis.dev>`_
+
 Data visualization made easier
 ==============================
 
 This is a project for interactive data visualization
 
-It uses a dedicated web app with cards that display python variables.
+It uses a dedicated web app with widgets that show live state of python variables.
 
-Check out the notebooks folder for examples
+Example `notebooks <notebooks>`_ are:
 
-Jump right in: `Quick start <http://docs.webvis.dev/usage/quickstart.html#>`_.
+- `basics <notebooks/test.ipynb>`_.
+- `using for ML  <notebooks/libvis_with_pytorch.ipynb>`_.
+- `writing custom modules <notebooks/modules.ipynb>`_.
+
+`Quick start <http://docs.libvis.dev/usage/quickstart.html#>`_.
 
 
 Quick start
@@ -53,5 +61,5 @@ and even bokeh is supported!
 Documentation
 -------------
 
-http://docs.webvis.dev
+http://docs.libvis.dev
 
