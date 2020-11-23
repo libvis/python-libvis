@@ -121,9 +121,8 @@ class Vis():
                 ERROR, WARNING, INFO, DEBUG, TRACE
             sink: stream or file for logs
         """
-
-        log.remove()
-        log.add(sink, level=level)
+        log.enable('libvis')
+        log.level(level)
 
     # -- Stops
 
