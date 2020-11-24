@@ -1,5 +1,4 @@
 
-
 .. raw:: html
 
     <div align="center">
@@ -8,6 +7,10 @@
         </a>
     </div>
     
+
+.. image:: https://libvis.dev/libvis-sm.png
+
+
 .. image:: https://img.shields.io/pypi/v/libvis.svg
     :target: https://pypi.python.org/pypi/libvis
     :alt: PyPi version
@@ -23,6 +26,10 @@ This project allow live and interactive visualization of python variables
 in a web dashboard application.
 Data is sent both ways: you can visualize and update the
 variables while running another code.
+
+
+_`ml-vis`:
+.. image:: assets/torch_adv_demo.gif
 
 
 Example `notebooks <notebooks>`_ are:
@@ -69,6 +76,7 @@ for more detailed usage.
 Use cases
 ---------
 
+.. _ml-vis:
 
 Machine learning visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
