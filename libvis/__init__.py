@@ -1,3 +1,5 @@
+from loguru import logger as log
+
 from . import __about__
 from legimens.Object import ref
 

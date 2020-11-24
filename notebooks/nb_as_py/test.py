@@ -99,7 +99,7 @@ for i in tqdm(range(100)):
 
 # This should plot following in webapp:
 #
-# ![image.png](attachment:image.png)
+# ![image1.png](attachment:image.png)
 
 # ### Matplotlib figures
 
