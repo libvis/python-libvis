@@ -115,7 +115,7 @@ Watch a variable
 This approach is useful for rapidly-updating or large data.
 It periodically sends updates about a mutable variable.
 
-.. code:
+.. code-block:: python
 
     mylist = []
     vis.watch(mylist, 'mylist')
@@ -131,7 +131,7 @@ Each time a live object is assigned an attribute,
 the updates are scheduled to sending.
 
 
-.. code:
+.. code-block:: python
 
     image = libvis.modules.insatlled.Image()
     vis.vars.image = image
