@@ -28,7 +28,8 @@ Data is sent both ways: you can visualize and update the
 variables while running another code.
 
 
-_`ml-vis`:
+`Machine learning visualization <#machine-learning-visualization>`_:
+
 .. image:: assets/torch_adv_demo.gif
 
 
